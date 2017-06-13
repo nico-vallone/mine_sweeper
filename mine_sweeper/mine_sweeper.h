@@ -12,6 +12,10 @@
 
 enum DisplayState {HIDDEN, QUESTIONED, MARKED, REVEALED};
 
+enum Action {CANCEL, REVEAL, QUESTION, UNQUESTION, MARK, UNMARK};
+
+enum WinState {LOSE = -1, NOTOVER, WIN};
+
 typedef struct Tile_Struct{
     int row;
     int col;
@@ -27,6 +31,8 @@ typedef struct MineSweeperBoard_Struct{
     int numMines;
 } MineSweeperBoard;
 
+void ValidateArguments(int argc);
+
 int SetSeed(int numArguments, char argv[]);
 
 tile** AllocateBoard(int numRows, int numCols);
@@ -41,6 +47,34 @@ void LayMines(MineSweeperBoard* game);
 
 void DisplayBoard(MineSweeperBoard game);
 
+int CountMarked(MineSweeperBoard game);
+
 void PrintState(tile tile);
+
+void Play(MineSweeperBoard game);
+
+tile AskPosition(MineSweeperBoard game);
+
+bool IsMoveValid(MineSweeperBoard game, tile move);
+
+bool IsValidInput(MineSweeperBoard game, tile move);
+
+bool IsValidFormat();
+
+int IsGameOver(MineSweeperBoard game);
+
+void PrintEndGame(MineSweeperBoard* game, int winState);
+
+void RevealAll(MineSweeperBoard* game);
+
+int AskAction(MineSweeperBoard game, tile move);
+
+int ToDo(int state);
+
+bool IsValidAction(int state, int action);
+
+void ExecuteAction(MineSweeperBoard* game, tile move, int action);
+
+void Reveal(MineSweeperBoard* game, tile move);
 
 #endif /* mine_sweeper_h */

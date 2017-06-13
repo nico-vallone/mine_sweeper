@@ -4,6 +4,8 @@
 
 int main(int argc, char* argv[]) {
     
+    ValidateArguments(argc);
+    
     MineSweeperBoard game;
     
     game.numRows = atoi(argv[1]);
@@ -16,11 +18,21 @@ int main(int argc, char* argv[]) {
     
     SetupGame(&game);
     
-    printf("Hello, World!\n");
-    
-    DisplayBoard(game);
+    Play(game);
     
     return 0;
+}
+
+void ValidateArguments(int argc){
+    
+    if (argc < 4){
+        printf("Not enough arguments. Usage:\n./mine_sweeper.out num_rows num_cols num_mines [seed])");
+        exit(0);
+    }
+    if (argc > 5){
+        printf("Too many arguments. Usage:\n./mine_sweeper.out num_rows num_cols num_mines [seed])");
+        exit(0);
+    }
 }
 
 int SetSeed(int numArguments, char argv[]){
@@ -68,10 +80,10 @@ void LayMines(MineSweeperBoard* game){
     int minesToLay = game->numMines;
     
     while (minesToLay > 0){
-        int row = rand() % (*game).numRows;
-        int col = rand() % (*game).numCols;
-        if ((*game).board[row][col].isMine == false){
-            (*game).board[row][col].isMine = true;
+        int row = rand() % game->numRows;
+        int col = rand() % game->numCols;
+        if (game->board[row][col].isMine == false){
+            game->board[row][col].isMine = true;
             printf("Placing mine at %d, %d\n", row, col);
             --minesToLay;
         }
