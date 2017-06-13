@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
+//Validates the starting arguments used to launch the program
 void ValidateArguments(int argc){
     
     if (argc < 4){
@@ -35,11 +36,13 @@ void ValidateArguments(int argc){
     }
 }
 
+//Returns a seed input by the user or uses the current time
 int SetSeed(int numArguments, char argv[]){
     if (numArguments == 5) return atoi(&argv[4]);
     else return (int)time(0);
 }
 
+//Dynamically allocates memory for a board, returns it
 tile** AllocateBoard(int numRows, int numCols){
     
     //Allocate memory for board array of tiles
@@ -50,6 +53,7 @@ tile** AllocateBoard(int numRows, int numCols){
     return board;
 }
 
+//Initializes the variables in every tile in the game
 void SetupGame(MineSweeperBoard* game){
     
     int i = 0; int j = 0;
@@ -75,6 +79,7 @@ void SetupGame(MineSweeperBoard* game){
     }
 }
 
+//Randomly chooses a row, column, to place n mines where there weren't mines before
 void LayMines(MineSweeperBoard* game){
     
     int minesToLay = game->numMines;
@@ -90,6 +95,7 @@ void LayMines(MineSweeperBoard* game){
     }
 }
 
+//Returns the number of mines in the eight surrounding tiles
 int CountNumSurrounding(MineSweeperBoard game, int row, int col){
     
     int i = 0; int j = 0;
@@ -107,6 +113,7 @@ int CountNumSurrounding(MineSweeperBoard game, int row, int col){
     return numSurrounding;
 }
 
+//Returns whether or not given coordinates are out of bounds
 bool IsOutOfBounds(MineSweeperBoard game, int row, int col){
     if (row >= game.numRows || row < 0) return true;
     if (col >= game.numCols || col < 0) return true;

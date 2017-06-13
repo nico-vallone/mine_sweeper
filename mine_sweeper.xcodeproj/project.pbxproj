@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D38EF881EEB9C2200430C60 /* play.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D38EF861EEB9C2200430C60 /* play.c */; };
 		4D38EF8A1EEB9C7300430C60 /* print_board.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D38EF891EEB9C7300430C60 /* print_board.c */; };
+		4D38EF8C1EEF5A3A00430C60 /* gameover.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D38EF8B1EEF5A3A00430C60 /* gameover.c */; };
 		4D9A6EB41EEA464A000AD943 /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A6EB31EEA464A000AD943 /* setup.c */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,8 @@
 		4D38EF851EEB82AA00430C60 /* mine_sweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mine_sweeper.h; sourceTree = "<group>"; };
 		4D38EF861EEB9C2200430C60 /* play.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = play.c; sourceTree = "<group>"; };
 		4D38EF891EEB9C7300430C60 /* print_board.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print_board.c; sourceTree = "<group>"; };
+		4D38EF8B1EEF5A3A00430C60 /* gameover.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gameover.c; sourceTree = "<group>"; };
+		4D38EF8D1EEF829900430C60 /* makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; usesTabs = 1; };
 		4D9A6EB01EEA464A000AD943 /* mine_sweeper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mine_sweeper; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9A6EB31EEA464A000AD943 /* setup.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = setup.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +69,8 @@
 				4D9A6EB31EEA464A000AD943 /* setup.c */,
 				4D38EF861EEB9C2200430C60 /* play.c */,
 				4D38EF891EEB9C7300430C60 /* print_board.c */,
+				4D38EF8B1EEF5A3A00430C60 /* gameover.c */,
+				4D38EF8D1EEF829900430C60 /* makefile */,
 			);
 			path = mine_sweeper;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9A6EB41EEA464A000AD943 /* setup.c in Sources */,
+				4D38EF8C1EEF5A3A00430C60 /* gameover.c in Sources */,
 				4D38EF8A1EEB9C7300430C60 /* print_board.c in Sources */,
 				4D38EF881EEB9C2200430C60 /* play.c in Sources */,
 			);

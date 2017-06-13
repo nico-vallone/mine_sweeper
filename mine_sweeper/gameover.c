@@ -1,4 +1,4 @@
-//A series of functions to detect if the game is over
+//A series of functions for the end game
 
 #include "mine_sweeper.h"
 
@@ -9,13 +9,14 @@ int IsGameOver(MineSweeperBoard game){
     
     for(i = game.numRows - 1; i >= 0; --i){ //for every row
         for(j = 0; j < game.numCols; ++j){ //for every cell
-            if(game.board[i][j].isMine && game.board[i][j].state == REVEALED) return LOSE;
-            if(game.board[i][j].state == HIDDEN) return NOTOVER;
+            if(game.board[i][j].isMine && game.board[i][j].state == REVEALED) return LOSE; //if a mine is revealed you lost
+            if(game.board[i][j].state == HIDDEN) return NOTOVER; //if any hidden tiles remain the game isn't over
         }
     }
     return WIN;
 }
 
+//Prints the final board state
 void PrintEndGame(MineSweeperBoard* game, int winState){
     
     RevealAll(game);
@@ -24,13 +25,14 @@ void PrintEndGame(MineSweeperBoard* game, int winState){
     if (winState == WIN) printf("You Won!!\n");
 }
 
+//Sets every tile to revealed
 void RevealAll(MineSweeperBoard* game){
     
     int i; int j;
     
-    for(i = 0; i < game->numRows; ++i){
-        for(j = 0; j < game->numCols; ++j){
-            game->board[i][j].state = REVEALED;
+    for(i = 0; i < game->numRows; ++i){ //for every row
+        for(j = 0; j < game->numCols; ++j){ //every cell
+            game->board[i][j].state = REVEALED; //is revealed
         }
     }
 }

@@ -2,10 +2,11 @@
 
 #include "mine_sweeper.h"
 
+//Master function that calls all the playtime functions
 void Play(MineSweeperBoard game){
     
-    tile move;
-    tile selected;
+    tile move; //placeholder tile containing only coordinates
+    tile selected; //actual tile in the game that is selected
     int action = 0;
     
     do{
@@ -22,6 +23,7 @@ void Play(MineSweeperBoard game){
     
 }
 
+//Returns the coordinates of the users selected tile
 tile AskPosition(MineSweeperBoard game){
     
     tile move;
@@ -39,8 +41,8 @@ tile AskPosition(MineSweeperBoard game){
 //Determines if user move is valid
 bool IsMoveValid(MineSweeperBoard game, tile move){
     
-    if(move.row >= game.numRows || move.row < 0) return false;
-    if(move.col >= game.numCols || move.col < 0) return false;
+    //not valid if out of bounds or already revealed
+    if(IsOutOfBounds(game, move.row, move.col)) return false;
     if(game.board[move.row][move.col].state == REVEALED){
         printf("This tile is already revealed\n");
         return false;
@@ -61,6 +63,7 @@ bool IsValidFormat(){
     return true;
 }
 
+//Gives user what the possible moves are given tile state
 int AskAction(MineSweeperBoard game, tile move){
     
     int action = 0;
@@ -84,6 +87,7 @@ int AskAction(MineSweeperBoard game, tile move){
     return action;
 }
 
+//Returns action to interpret user input as
 int ToDo(int state){
     
     int action;
@@ -112,9 +116,10 @@ int ToDo(int state){
                 case 1: return CANCEL;
             }
     }
-    return CANCEL;
+    return CANCEL; //if unexpected input, cancel
 }
 
+//Returns if user selection is valid given tile state and action
 bool IsValidAction(int state, int action){
     
     if (action < 0) return false;
@@ -129,6 +134,7 @@ bool IsValidAction(int state, int action){
     return true;
 }
 
+//Changes the board state to reflect user input
 void ExecuteAction(MineSweeperBoard* game, tile move, int action){
     
     switch (action) {
@@ -152,13 +158,14 @@ void ExecuteAction(MineSweeperBoard* game, tile move, int action){
     return;
 }
 
+//Recursively reveals a tile & its mineless neighbors
 void Reveal(MineSweeperBoard* game, tile move){
     
     int i; int j;
-    tile revealTile;
+    tile revealTile; //placeholder tile containing a neighbor's coordinates
     
-    game->board[move.row][move.col].state = REVEALED;
-    
+    game->board[move.row][move.col].state = REVEALED; //reveal self
+    //if no mine neighbors, initiate recursive search
     if (game->board[move.row][move.col].numSurrounding == 0){
         for(i = -1; i < 2; ++i){
             for(j = -1; j < 2; ++j){

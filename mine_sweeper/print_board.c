@@ -2,6 +2,7 @@
 
 #include "mine_sweeper.h"
 
+//Prints mines left, then cycles through each cell
 void DisplayBoard(MineSweeperBoard game){
     
     int i = 0; int j = 0;
@@ -20,6 +21,7 @@ void DisplayBoard(MineSweeperBoard game){
     } printf("\n");
 }
 
+//Prints a cell's visible state
 void PrintState(tile tile){
     
     //char array of state symbols
@@ -34,6 +36,7 @@ void PrintState(tile tile){
     else printf("%c ", symbols[tile.state]);
 }
 
+//Counts the number of marked tiles
 int CountMarked(MineSweeperBoard game){
     
     int i = 0; int j = 0; int count = 0;
